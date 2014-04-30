@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>github.com.helbertrios.{pacote_do_projeto}</groupId>
+	<artifactId>{nome_do_artefato}</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>{nome_do_seu_projeto}</name>
+	<description>{descricao_do_seu_projeto}</description>
+
+	<properties>
+		<jdk.version>1.7</jdk.version>
+		<maven.compile.plugin.version>3.1</maven.compile.plugin.version>
+	</properties>
+	
+	<distributionManagement>
+		<repository>
+			<id>releases-{repo}</id>
+			<url>http://{site}/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots-{repo}</id>
+			<url>http://{site}/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+		
+	<profiles>
+		<profile>
+			<id>nexus-{repo}</id>
+			<repositories>
+				<repository>
+					<id>public</id>
+					<name>Public Repositories</name>					
+					<url>http://{site}/content/groups/public/</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>jPublic Repositories Plugins</id>
+					<name>Public Plugins Repositorie</name>
+					<url>http://{site}/content/groups/public/</url>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compile.plugin.version}</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>{org.group}</groupId>
+				<artifactId>{artifact}</artifactId>
+				<version>{version}</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>{org.group}</groupId>
+			<artifactId>{artifact}</artifactId>
+		</dependency>
+	</dependencies>
+	
+</project>
