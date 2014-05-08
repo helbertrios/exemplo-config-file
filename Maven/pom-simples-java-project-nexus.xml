@@ -27,6 +27,9 @@
 	<profiles>
 		<profile>
 			<id>nexus-{repo}</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>	
 			<repositories>
 				<repository>
 					<id>public</id>
